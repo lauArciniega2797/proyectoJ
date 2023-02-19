@@ -11,11 +11,13 @@ body {
 :root {
     --red:#e74c3c;
     --red_light: hsl(6deg 78% 93%);
-    --yellow:#f1c40f;
-    --green_light:#2ecc71;
+    /* --yellow:#f1c40f; */
+    --yellow:#fff200;
     --green:#27ae60;
+    --green_light:#2ecc71;
     --blue:#3498db;
-    --orange:#f39c12;
+    /* --orange:#f39c12; */
+    --orange:#ffd257;
     --white:#fff;
     --gray_white: #f3f6f9;
 }
@@ -170,8 +172,11 @@ body {
     transition: background-color .2s
 }
 #app_table table tbody tr.is-orange:hover {
-    background-color: #e9940c;
+    background-color: #ffc21a;
 }
+/* #app_table table tbody tr.is-orange:hover {
+    background-color: #e9940c;
+} */
 #app_table table tbody tr.is-red:hover {
     background-color: #e5412e;
 }
@@ -182,8 +187,11 @@ body {
     background-color: #2abb67;
 }
 #app_table table tbody tr.is-yellow:hover {
-    background-color: #deb40d;
+    background-color: #f5e900;
 }
+/* #app_table table tbody tr.is-yellow:hover {
+    background-color: #deb40d;
+} */
 #app_table table tbody tr.is-white:hover {
     background-color: var(--gray_white);
 }
@@ -191,7 +199,7 @@ body {
     width: 95%;
     margin: 0 auto;
     position: relative;
-    padding: 1em 0.3em;
+    padding: .5em 0.3em;
 }
 #app_table table tbody tr td div span.bar_percentage {
     position: absolute;

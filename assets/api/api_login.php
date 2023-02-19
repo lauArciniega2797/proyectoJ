@@ -22,12 +22,10 @@ if($action == 'login'){
 }
 
 if($action == 'closeSesion'){
-    session_destroy();
-
-    if(!isset($_SESSION['usuario'])){
-        $res['deslogueado'] = true;
+    if(session_destroy()) {
+        $res['destroyed'] = true;
     } else {
-        $res['deslogueado'] = false;
+        $res['destroyed'] = false;
     }
 }
 

@@ -142,7 +142,12 @@ if(!isset($_SESSION['usuario'])) {
                 closeSesion: function(){
                     $.get("assets/api/api_login.php?action=closeSesion",
                     function(data, status) {
-                        console.log(data);
+                        if(data) {
+                            let result = JSON.parse(data);
+                            if(result.destroyed) {
+                                window.location = 'login.php'
+                            }
+                        }
                     })
                 },
                 statusClases: function(status){
