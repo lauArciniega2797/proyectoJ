@@ -125,7 +125,9 @@ body {
     text-align: center;
 }
 
-#app_table {}
+#app_table {
+    padding: 1em .5em;
+}
 #app_table #title_section {
     display: flex;
     justify-content: space-between;
@@ -133,10 +135,22 @@ body {
 }
 #app_table button {
     margin-left: auto;
-    padding: .2em .4em;
+    padding: 0.5em 1em;
     background-color: var(--gray_white);
     outline: none;
     cursor: pointer;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}
+#app_table table {
+    border: 1px solid #dde6ee;
+    border-top: 2px solid #dde6ee;
+    width: 98%;
+    margin: 0 auto;
+    margin-top: 2em;
+}
+#app_table table thead {
+    background-color: var(--gray_white);
 }
 #app_table table thead th,
 #app_table table tbody td {
@@ -149,6 +163,8 @@ body {
 }
 #app_table table thead th {
     text-align: left;
+    padding: 1em 0.5em;
+    border-right: 1px solid #dde6ee;
 }
 #app_table table tbody tr {
     transition: background-color .2s
