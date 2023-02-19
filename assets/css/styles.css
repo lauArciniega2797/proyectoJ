@@ -1,0 +1,133 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    font-size: 16px;;
+}
+:root {
+    --red:#e74c3c;
+    --red_light: hsl(6deg 78% 93%);
+    --yellow:#f1c40f;
+    --green:#2ecc71;
+    --blue:#3498db;
+    --orange:#f39c12;
+    --white:#fff;
+    --gray_white: #f3f6f9;
+}
+
+#app_login {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background-color: var(--gray_white);
+    padding-top: 1.5em;
+}
+#app_login > div:not(#success) {
+    width: 25vw;
+    background: var(--white);
+    padding: 1em 1.2em;
+    height: fit-content;
+    box-shadow: 0px 7px 5px 0px #dde6ee;
+    border: 1px solid #dde6ee;
+}
+#app_login > div h1 {
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: .6em;
+}
+#app_login #message_login {
+    background-color: var(--red_light);
+    padding: 0.5em 0.7em;
+    border-radius: 2px;
+    color: var(--red);
+}
+#app_login > div form {
+    margin-top: 1.5em;
+}
+#app_login > div form fieldset  {
+    border: none;
+    margin-bottom: 1em;
+}
+#app_login > div form fieldset label  {
+    display: block;
+    margin-bottom:.5em;
+    font-size: .9em;
+    font-weight: 600;
+}
+#app_login > div form fieldset input {
+    padding: 0.5em 0.7em;
+    display:block;
+    width:100%;
+    outline:none;
+}
+#app_login > div form fieldset ~ button {
+    display: block;
+    width: 100%;
+    background-color: var(--blue);
+    padding: 0.8em 0;
+    border-radius: 4px;
+    outline: none;
+    color: var(--white);
+    margin-top: 2em;
+    border:none;
+    cursor:pointer;
+}
+#app_login > div form fieldset ~ button ~ a {
+    font-size: .9em;
+    text-align: center;
+    display: block;
+    margin-top: 0.8em;
+    color: #999999;
+    cursor: pointer;
+}
+
+#app_login > div#success #charger {
+    position: relative;
+    background: rgb(234,108,23);
+    background: -webkit-linear-gradient(left, var(--blue) 20%, var(--gray_white) 20%);
+    background: -moz-linear-gradient(left, var(--blue) 20%, var(--gray_white) 20%);
+    background: -o-linear-gradient(left, var(--blue) 20%, var(--gray_white) 20%);
+    background: linear-gradient(to right, var(--blue) 20%, var(--gray_white) 20%);
+    width: 40px;
+    height: 40px;
+    margin: 0.6em auto;
+    border-radius: 50%;
+    animation: spinner 1.2s infinite linear;
+}
+#app_login > div#success #charger::after {
+    content: '';
+    width:90%;
+    height:90%;
+    background:var(--gray_white);
+    top:5%;
+    left:5%;
+    position: absolute;
+    border-radius:50%;
+}
+#app_login > div#success p {
+    text-align: center;
+}
+
+#app_table {}
+#app_table button {
+    margin-left: auto;
+    padding: .2em .4em;
+    background-color: var(--gray_white);
+    outline: none;
+    cursor:pointer;
+}
+
+
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg)
+    }
+}
