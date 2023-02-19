@@ -12,13 +12,25 @@ body {
     --red:#e74c3c;
     --red_light: hsl(6deg 78% 93%);
     --yellow:#f1c40f;
-    --green:#2ecc71;
+    --green_light:#2ecc71;
+    --green:#27ae60;
     --blue:#3498db;
     --orange:#f39c12;
     --white:#fff;
     --gray_white: #f3f6f9;
 }
-
+.is-red {background-color: var(--red);}
+.is-yellow{background-color: var(--yellow);}
+.is-green{background-color: var(--green);}
+.is-green-light{background-color: var(--green_light);}
+.is-blue{background-color: var(--blue);}
+.is-orange{background-color: var(--orange);}
+.is-white{background-color: var(--white);}
+.is-text-center {text-align: center;}
+.is-text-left{text-align: start;}
+.is-text-right{text-align: end;}
+.is-text-weight-bold{font-weight: 700;}
+.word-space{white-space: break-spaces;}
 #app_login {
     width: 100vw;
     height: 100vh;
@@ -114,12 +126,74 @@ body {
 }
 
 #app_table {}
+#app_table #title_section {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
 #app_table button {
     margin-left: auto;
     padding: .2em .4em;
     background-color: var(--gray_white);
     outline: none;
-    cursor:pointer;
+    cursor: pointer;
+}
+#app_table table thead th,
+#app_table table tbody td {
+    font-size: .74em;
+}
+#app_table table tbody td {
+    padding: .3em .5em;
+    vertical-align: middle;
+    /* border-right: 1px solid #333 */
+}
+#app_table table thead th {
+    text-align: left;
+}
+#app_table table tbody tr {
+    transition: background-color .2s
+}
+#app_table table tbody tr.is-orange:hover {
+    background-color: #e9940c;
+}
+#app_table table tbody tr.is-red:hover {
+    background-color: #e5412e;
+}
+#app_table table tbody tr.is-green:hover {
+    background-color: #249e57;
+}
+#app_table table tbody tr.is-green-light:hover {
+    background-color: #2abb67;
+}
+#app_table table tbody tr.is-yellow:hover {
+    background-color: #deb40d;
+}
+#app_table table tbody tr.is-white:hover {
+    background-color: var(--gray_white);
+}
+#app_table table tbody tr td div {
+    width: 95%;
+    margin: 0 auto;
+    position: relative;
+    padding: 1em 0.3em;
+}
+#app_table table tbody tr td div span.bar_percentage {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 1%;
+    z-index: 0;
+    background-color: var(--green);
+}
+#app_table table tbody tr td div span:first-of-type {
+    position: relative;
+    z-index: 2;
+}
+#app_table table tbody tr.active {
+    background-color:var(--blue);
+}
+#app_table table tbody tr.active:hover {
+    background-color:var(--blue);
 }
 
 
