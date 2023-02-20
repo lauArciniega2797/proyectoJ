@@ -10,8 +10,9 @@ if(!isset($_SESSION['usuario'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Control de distribución</title>
+    <title>Control de distribución | COPESMAR</title>
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
     <script src="assets/js/vue.js"></script>
     <script src="assets/js/jquery.js"></script>
     <script src="https://kit.fontawesome.com/e71f4c6343.js" crossorigin="anonymous"></script>
@@ -19,13 +20,18 @@ if(!isset($_SESSION['usuario'])) {
 <body>
     <section id="app_table">
         <div id="title_section">
-            <h1>Control de distribución</h1>
+            <figure width="6%">
+                <img src="assets/images/copesmar.png" alt="Logotipo empresarial | COPESMAR" width="100%">
+            </figure>
+            
+            <h1>Control de distribución</h1> 
+            
             <div>
                 <button @click="getData" title="Cargar datos"><i class="fa-solid fa-rotate-right"></i></button>
                 <button @click="closeSesion">Cerrar sesión</button>
             </div>
         </div>
-        <table cellspacing="0">
+        <table cellspacing="0" class="minimal">
             <thead>
                 <th>No. Carga</th>
                 <th>Fecha</th>
@@ -48,16 +54,16 @@ if(!isset($_SESSION['usuario'])) {
             </thead>
             <tbody>
                 <tr v-for="items in registros" :class="statusClases(items)" @click="selectedRow">
-                    <td class="is-text-right">{{ items.no_carga }}</td>
+                    <td class="is-text-right" width="3%">{{ items.no_carga }}</td>
                     <td>{{ items.fecha }} </td>
-                    <td class="is-text-right">{{ items.no_rutas }} </td>
+                    <td class="is-text-right" width="3%">{{ items.no_rutas }} </td>
                     <td class="word-space">{{ items.rutas_entregar }} </td>
-                    <td class="is-text-right">{{ items.vehiculo_id }} </td>
+                    <td class="is-text-right" width="3%">{{ items.vehiculo_id }} </td>
                     <td>{{ items.tipo }} </td>
                     <td>{{ items.marca }} </td>
                     <td class="is-text-right">{{ helper_format_cant(items.capacidad_kgs) }} </td>
                     <td class="is-text-right">{{ helper_format_cant(items.no_partidas) }} </td>
-                    <td class="is-text-right">{{ helper_format_cant(items.partidas_escaneadas) }} </td>
+                    <td class="is-text-right" width="5%">{{ helper_format_cant(items.partidas_escaneadas) }} </td>
                     
                     <td>
                         <div>
@@ -67,7 +73,7 @@ if(!isset($_SESSION['usuario'])) {
                     </td>
 
                     <td class="is-text-right">{{ helper_format_cant(items.total_kgs) }} </td>
-                    <td class="is-text-right">{{ helper_format_cant(items.total_kgs_escaneados) }} </td>
+                    <td class="is-text-right" width="5%">{{ helper_format_cant(items.total_kgs_escaneados) }} </td>
                     
                     <td>
                         <div>
@@ -78,7 +84,9 @@ if(!isset($_SESSION['usuario'])) {
 
                     <td class="is-text-right">{{ helper_format_cant(items.no_clientes) }} </td>
                     <td class="is-text-right">{{ helper_format_cant(items.no_pedidos) }} </td>
-                    <td class="is-text-right is-text-weight-bold">{{ items.estatus }} </td>
+                    <td class="is-text-right is-text-weight-bold">
+                        <span :class="statusText(items)" class="estatus_span">{{ items.estatus }}</span>
+                    </td>
                     <td>{{ items.ult_actualizacion }} </td>
                 </tr>
             </tbody>
@@ -124,7 +132,8 @@ if(!isset($_SESSION['usuario'])) {
                     {no_carga:75, fecha:'15/02/2023', no_rutas:1, rutas_entregar:'R86 PASTOR ORTIZ', vehiculo_id:43, tipo:'CAMIONETA', marca:'NISSAN NP 300', capacidad_kgs:1500, no_partidas:10, partidas_escaneadas:6, p_escaneado_partidas:64, total_kgs:898, total_kgs_escaneados:1064, p_escaneado_kgs:100, no_clientes:3, no_pedidos:5, estatus:'CARGADO', ult_actualizacion: '16/02/23 10:56:43 a.m.'},
                     {no_carga:74, fecha:'15/02/2023', no_rutas:3, rutas_entregar:'R14 ACAPULCO \n R16 LAZARO CARDENAS \n R87 APATZINGAN', vehiculo_id:1002, tipo:'GENERICA', marca:'NA (BODEGA)', capacidad_kgs:35000, no_partidas:48, partidas_escaneadas:18, p_escaneado_partidas:38, total_kgs:16153.30, total_kgs_escaneados:14694.86, p_escaneado_kgs:91, no_clientes:20, no_pedidos:20, estatus:'DE REGRESO', ult_actualizacion: '16/02/23 10:56:43 a.m.'},
                 ],
-                registros:[]
+                registros:[],
+                table_min: false
             },
             created(){
                 this.getData()
@@ -132,6 +141,10 @@ if(!isset($_SESSION['usuario'])) {
                 setTimeout(() => {
                     this.getData();
                 }, 30000);
+
+                if(document.querySelector('table').classList.contains('minimal')){
+                    this.table_min = true
+                }
             },
             methods: {
                 getData: function(){
@@ -171,10 +184,38 @@ if(!isset($_SESSION['usuario'])) {
                         classe = 'is-yellow'
                     }
 
-                    return classe
+                    
+                    if(!this.table_min){
+                        return classe
+                    }
+                },
+                statusText: function(status){
+                    let classe
+                    if(status.estatus == 'EN CARGA'){
+                        classe = 'is-text-red'
+                    }
+                    if(status.estatus == 'CARGADO') {
+                        classe = 'is-text-orange'
+                    }
+                    if(status.estatus == 'TERMINADO') {
+                        classe = 'is-text-green'
+                    }
+                    if(status.estatus == 'DE REGRESO') {
+                        classe = 'is-text-green_light'
+                    }
+                    if(status.estatus == 'VISITANDO CLIENTES') {
+                        classe = 'is-text-white'
+                    }
+                    if(status.estatus == 'EN RUTA') {
+                        classe = 'is-text-yellow'
+                    }
+
+                    if(this.table_min){
+                        return classe
+                    }
                 },
                 helper_format_cant: function(cant){
-                    return (parseFloat(cant).toFixed(2)).toLocaleString('en-US')
+                    return parseFloat((cant).toFixed(2)).toLocaleString('en-US')
                 },
                 percent: function(perce){
                     let widthValue="width:";

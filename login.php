@@ -10,17 +10,21 @@ if(isset($_SESSION['usuario'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar sesión</title>
+    <title>Iniciar sesión | COPESMAR</title>
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <section id="app_login">
         <div v-if="!login_success">
-            <h1>Sistema control de procesos</h1>
-            <p id="message_login" v-if="message_login">{{ message_login }}</p>
+            <figure>
+                <img src="assets/images/copesmar.png" alt="" width="100%">
+            </figure>
+            <!-- <h1>Inicia sesión</h1> -->
+            <p id="message_login" v-if="message_login" class="is-text-center">{{ message_login }}</p>
             <form>
                 <fieldset>
                     <label for="">Usuario</label>
@@ -31,7 +35,7 @@ if(isset($_SESSION['usuario'])){
                     <input type="password" name="password" id="password" v-model="pass">
                 </fieldset>
                 <button @click="login">Iniciar sesión</button>
-                <a>¿Olvidaste la contraseña?</a>
+                <!-- <a>¿Olvidaste la contraseña?</a> -->
             </form>
         </div>
         <div v-else id="success">
