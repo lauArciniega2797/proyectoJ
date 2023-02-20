@@ -194,10 +194,10 @@ body {
 #app_table table tbody tr {
     transition: background-color .2s
 }
-#app_table table tbody tr:nth-child(even) {
+#app_table table.minimal tbody tr:nth-child(even) {
     background-color: var(--gray_white);
 }
-#app_table table tbody tr:hover {
+#app_table table.minimal tbody tr:hover {
     background-color: #ebf0f5;
 }
 #app_table table tbody tr.is-orange:hover {
@@ -248,18 +248,18 @@ body {
 #app_table table tbody tr.active:hover {
     background-color:var(--blue);
 }
-#app_table .estatus_span {
+#app_table table.minimal .estatus_span {
     padding: 0.5em;
     border-radius: 4px;
     font-weight: bolder;
     font-size: 1.05em;
 }
-#app_table .estatus_span.is-text-red { background-color: #f7c1bb; }
-#app_table .estatus_span.is-text-yellow { background-color: #fff766; color:#333; }
-#app_table .estatus_span.is-text-green { background-color: #c1f1d5; }
-#app_table .estatus_span.is-text-green_light { background-color: #d5f6e3; }
-#app_table .estatus_span.is-text-orange { background-color: #fff1cc; }
-#app_table .estatus_span.is-text-white { color: #333; }
+#app_table table.minimal .estatus_span.is-text-red { background-color: #f7c1bb; }
+#app_table table.minimal .estatus_span.is-text-yellow { background-color: #fff766; color:#333; }
+#app_table table.minimal .estatus_span.is-text-green { background-color: #c1f1d5; }
+#app_table table.minimal .estatus_span.is-text-green_light { background-color: #d5f6e3; }
+#app_table table.minimal .estatus_span.is-text-orange { background-color: #fff1cc; }
+#app_table table.minimal .estatus_span.is-text-white { color: #333; }
 
 @keyframes spinner {
     0% {

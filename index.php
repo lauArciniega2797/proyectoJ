@@ -31,7 +31,8 @@ if(!isset($_SESSION['usuario'])) {
                 <button @click="closeSesion">Cerrar sesión</button>
             </div>
         </div>
-        <table cellspacing="0" class="minimal">
+        <!-- add class "minimal" to change table design -->
+        <table cellspacing="0" class="">
             <thead>
                 <th>No. Carga</th>
                 <th>Fecha</th>
